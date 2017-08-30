@@ -1,0 +1,342 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Technical Account Manager: Technical Assessment</title>
+    <link href="cc_StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <span>
+                <img src="images/logo.gif" style="width: 165px; margin-bottom: 15px;" />
+            </span>
+        </div>
+        <div class="login">
+            <nav class="pull-right">
+                <input id="btn_login" class="btn btn-primary" value="LOGIN" type="button" />
+            </nav>
+        </div>
+    </header>
+
+
+    <div class="main">
+        <div class="container">
+            <div class="white-bg-block">
+
+                <div id="loading" class="load hidden">
+                    <img src="images/Spinner.gif" />
+                </div>
+
+                <div id="intro">
+                    <div class="text-title">
+                        <p>Welcome to Currencycloud</p>
+                        <p>Please login</p>
+                    </div>
+                </div>
+
+                <div id="page1" class="hidden">
+                    <div id="details">
+                        <div>
+                            <div class="page-header">
+                                <p>Make a conversion</p>
+                            </div>
+                            <div class="section-header">
+                                <p>Select currencies</p>
+                            </div>
+                            <div class="dropdown">
+                                <label for="ddlSellCurrency" class="input-label">Sell currency:</label>
+                                <select id="ddlSellCurrency" class="input-field"></select>
+                            </div>
+                            <div class="dropdown">
+                                <label for="ddlBuyCurrency" class="input-label">Buy currency:</label>
+                                <select id="ddlBuyCurrency" class="input-field"></select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="section-header">
+                                <p>Enter amount</p>
+                            </div>
+                            <div class="input-group">
+                                <label for="amount" class="input-label">Amount:</label>
+                                <input id="amount" class="input-field" type="text" title="Amount" placeholder="Amount" autocomplete="off" required="required" onkeypress="return isNumber()">
+                            </div>
+                            <div>
+                                <label for="rdSell" class="input-label">Sell:</label>
+                                <input id="rdSell" class="input-radio" type="radio" name="fixedSide" value="sell" checked="checked" />
+                                <label for="rdBuy" class="input-label">Buy:</label>
+                                <input id="rdBuy" class="input-radio" type="radio" name="fixedSide" value="buy" />
+                            </div>
+                        </div>
+
+                        <div>
+                            <input id="btn_rate" class="btn" value="Get rate" type="button" disabled="disabled" />
+                        </div>
+                    </div>
+
+                    <div id="rate" class="hidden">
+                        <div class="text">
+                            <p></p>
+                        </div>
+                        <div>
+                            <input id="btn_proceed" class="btn btn-form" value="Continue" type="button" />
+                        </div>
+                    </div>
+
+                    <div id="additionalDetails" class="hidden">
+                        <div class="section-header">
+                            <p>Additional details</p>
+                        </div>
+                        <div class="input-group">
+                            <label for="reason" class="input-label">Reason:</label>
+                            <input id="reason" class="input-field" type="text" title="Reason" placeholder="Reason" autocomplete="off" required="required">
+                        </div>
+                        <div>
+                            <label for="termAgreement" class="input-label">Agree to <a href="#" class="link">terms and conditions</a>:</label>
+                            <input id="termAgreement" type="checkbox" value="true" />
+                        </div>
+                        <div>
+                            <input id="btn_convert" class="btn" value="Convert" type="button" disabled="disabled" />
+                        </div>
+                        <div class="text">
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div id="next" class="hidden">
+                        <div>
+                            <input id="btn_next" class="btn btn-form" value="Next" type="button" />
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div id="page2" class="hidden">
+                    <div>
+                        <div class="page-header">
+                            <p>Pay beneficiary</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="section-header">
+                            <p>Select beneficiary</p>
+                        </div>
+                        <div id="table">
+                        </div>
+                    </div>
+                    <div class="btn-right">
+                        <div  class="pull-right inline">
+                            <input id="btn_createNewBeneficiary" class="btn btn-form" value="Create beneficiary" type="button" />
+                        </div>
+                        <div class="pull-right inline">
+                            <input id="btn_deleteBeneficiary" class="btn" value="Delete beneficiary" type="button" disabled="disabled" />
+                        </div>
+                    </div>
+                    <div id="beneficiaryDetails" class="hidden">
+                        <div id="gp_bankAccountHolderName" class="input-group group">
+                            <label for="bankAccountHolderName" class="input-label label">Account holder:</label>
+                            <input id="bankAccountHolderName" class="input-field input" type="text" disabled="disabled">
+                        </div>
+                        <div id="gp_id" class="input-group group">
+                            <label for="id" class="input-label label">ID:</label>
+                            <input id="id" class="input-field input" type="text" disabled="disabled">
+                        </div>
+                        <div id="gp_paymentType" class="input-group group">
+                            <label for="paymentType" class="input-label label">Payment type:</label>
+                            <input id="paymentType" class="input-field input" type="text" disabled="disabled">
+                        </div>
+                        <div id="gp_reference" class="input-group group">
+                            <label for="reference" class="input-label label">Reference:</label>
+                            <input id="reference" class="input-field input" type="text" title="Reference" placeholder="Reference" autocomplete="off" required="required">
+                        </div>
+
+                        <div class="dropdown">
+                            <label for="ddlPaymentCurrency" class="input-label label">Currency:</label>
+                            <select id="ddlPaymentCurrency" class="input-field select"></select>
+                        </div>
+                        <div id="gp_paymentAmount" class="input-group group">
+                            <label for="paymentAmount" class="input-label label">Amount:</label>
+                            <input id="paymentAmount" class="input-field input" type="text" title="Amount" placeholder="Amount" autocomplete="off" required="required">
+                        </div>
+                        <div id="gp_reason" class="input-group group">
+                            <label for="reason" class="input-label label">Reason:</label>
+                            <input id="reason" class="input-field input" type="text" title="Reason" placeholder="Reason" autocomplete="off" required="required">
+                        </div>
+
+
+                        <div>
+                            <div>
+                                <input id="btn_makePayment" class="btn btn-form" value="Make payment" type="button" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                
+                <div id="page3" class="hidden">
+                    <div>
+                        <div class="page-header">
+                            <p>Create beneficiary</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="section-header">
+                            <p>Select country and currency of beneficiary bank account</p>
+                        </div>
+                        <div>
+                            <div class="dropdown">
+                                <label for="ddlBankAccountCountry" class="input-label label">Country:</label>
+                                <select id="ddlBankAccountCountry" class="input-field select"></select>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="dropdown">
+                                <label for="ddlBankAccountCurrency" class="input-label label">Currency:</label>
+                                <select id="ddlBankAccountCurrency" class="input-field select"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div id="beneficiaryPaymentType" class="hidden">
+                            <div>
+                                <div class="section-header">
+                                    <p>Select payment and entity type</p>
+                                </div>
+                                <div>
+                                    <div>
+                                        <label for="rdPriority" class="input-label">Priority:</label>
+                                        <input id="rdPriority" class="input-radio" type="radio" name="paymentType" value="priority" disabled="disabled" />
+                                        <label for="rdRegular" class="input-label">Regular:</label>
+                                        <input id="rdRegular" class="input-radio" type="radio" name="paymentType" value="regular" disabled="disabled" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <label for="rdIndividual" class="input-label">Individual:</label>
+                                    <input id="rdIndividual" class="input-radio" type="radio" name="entityType" value="individual" />
+                                    <label for="rdCompany" class="input-label">Company:</label>
+                                    <input id="rdCompany" class="input-radio" type="radio" name="entityType" value="company" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="beneficiaryRequiredDetails" class="hidden">
+                        <div class="section-header">
+                            <p>Complete details of beneficiary bank account</p>
+                        </div>
+                        <div class="input-group group">
+                            <label for="bankAccountHolderName" class="input-label label">Name of account holder:</label>
+                            <input id="bankAccountHolderName" class="input-field input" type="text" title="Name of bank account holder" placeholder="Name of bank account holder" autocomplete="off" required="required">
+                        </div>
+                        <div class="input-group group">
+                            <label for="name" class="input-label label">Reference:</label>
+                            <input id="name" class="input-field input" type="text" title="Reference" placeholder="Reference" autocomplete="off" required="required">
+                        </div>
+
+                        <div class="optional">
+                            <div id="gp_accountNumber" class="input-group group hidden">
+                                <label for="accountNumber" class="input-label label">Account number:</label>
+                                <input id="accountNumber" class="input-field input" type="text" title="Account number" placeholder="Account number" autocomplete="off" required="required">
+                            </div>
+                            <div id="gp_sortCode" class="input-group group hidden">
+                                <label for="sortCode" class="input-label label">Sort code:</label>
+                                <input id="sortCode" class="input-field input" type="text" title="Sort code" placeholder="Sort code" autocomplete="off" required="required">
+                            </div>
+                            <div id="gp_bicSwift" class="input-group group hidden">
+                                <label for="bicSwift" class="input-label label">BIC or Swift code:</label>
+                                <input id="bicSwift" class="input-field input" type="text" title="BIC or Swift code" placeholder="BIC or Swift code" autocomplete="off" required="required">
+                            </div>
+                            <div id="gp_iban" class="input-group group hidden">
+                                <label for="iban" class="input-label label">IBAN number:</label>
+                                <input id="iban" class="input-field input" type="text" title="IBAN number" placeholder="IBAN number" autocomplete="off" required="required">
+                            </div>
+                            <div id="gp_beneficiaryFirstName" class="input-group group hidden">
+                                <label for="beneficiaryFirstName" class="input-label label">First name:</label>
+                                <input id="beneficiaryFirstName" class="input-field input" type="text" title="Beneficiary first name" placeholder="Beneficiary first name" autocomplete="off" required="required">
+                            </div>
+                            <div id="gp_beneficiaryLastName" class="input-group group hidden">
+                                <label for="beneficiaryLastName" class="input-label label">Last name:</label>
+                                <input id="beneficiaryLastName" class="input-field input" type="text" title="Beneficiary last name" placeholder="Beneficiary last name" autocomplete="off" required="required">
+                            </div>
+                            <div id="gp_beneficiaryCompanyName" class="input-group group hidden">
+                                <label for="beneficiaryCompanyName" class="input-label label">Company name:</label>
+                                <input id="beneficiaryCompanyName" class="input-field input" type="text" title="Beneficiary company name" placeholder="Beneficiary company name" autocomplete="off" required="required">
+                            </div>
+                            <div id="gp_beneficiaryAddress" class="input-group group hidden">
+                                <label for="beneficiaryAddress" class="input-label label">First line of address:</label>
+                                <input id="beneficiaryAddress" class="input-field input" type="text" title="Beneficiary address" placeholder="Beneficiary address" autocomplete="off" required="required">
+                            </div>
+                            <div id="gp_beneficiaryCity" class="input-group group hidden">
+                                <label for="beneficiaryCity" class="input-label label">City:</label>
+                                <input id="beneficiaryCity" class="input-field input" type="text" title="Beneficiary city" placeholder="Beneficiary city" autocomplete="off" required="required">
+                            </div>
+                            <div id="gp_beneficiaryCountry" class="dropdown group hidden">
+                                <label for="ddlBeneficiaryCountry" class="input-label label">Country:</label>
+                                <select id="ddlBeneficiaryCountry" class="input-field select"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btn-right">
+                        <div  class="pull-right inline">
+                            <input id="btn_create" class="btn btn-form" value="Create" type="button" />
+                        </div>
+                        <div  class="pull-right inline">
+                            <input id="btn_cancel" class="btn btn-form" value="Cancel" type="button" />
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="page4" class="hidden">
+                    <div>
+                        <div class="text-end">
+                            <p>Congratulations you have created a payment!</p>
+                            <p>The funds are now winging their way to your beneficiary</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="add-spacing">
+        <div class="container">
+            <div class="author">
+                David Brenda
+            </div>
+            <div class="footer-links">
+                <div class="social_network">
+                    <nav class="pull-right">
+                        <ul>
+                            <li class="github">
+                                <a target="_blank" href="https://github.com/ghubdev">GitHub</a>
+                            </li>
+                            <li class="linkedin">
+                                <a target="_blank" href="https://www.linkedin.com/in/david-brenda">LinkedIn</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="cc.js"></script>
+
+</body>
+</html>
