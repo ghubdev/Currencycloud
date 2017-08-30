@@ -17,3 +17,8 @@ Be creative! Design and build a basic application against our demo environment u
    • Beneficiaries
   
    • Rates
+
+
+# Caveats
+
+While this application can perform most of it's intended functions, it is by no means finished. Work is needed on validation and creating beneficiaries. To use the application effectively it is recommended that you use GBP and EUR conversions for the time being.
